@@ -1,0 +1,16 @@
+/home/vladimir/Downloads/BBDD/src/main/java/northwind/web/CategoriaController.java
+/home/vladimir/Downloads/BBDD/src/main/java/northwind/respository/CategoriaRepository.java
+/home/vladimir/Downloads/BBDD/src/main/java/northwind/web/ProvedorController.java
+/home/vladimir/Downloads/BBDD/src/main/java/northwind/model/Categoria.java
+/home/vladimir/Downloads/BBDD/src/main/java/northwind/respository/ProvedorRepository.java
+/home/vladimir/Downloads/BBDD/src/main/java/northwind/respository/impl/ProvedorRepositoryImpl.java
+/home/vladimir/Downloads/BBDD/src/main/java/northwind/Application.java
+/home/vladimir/Downloads/BBDD/src/main/java/northwind/service/CategoriaService.java
+/home/vladimir/Downloads/BBDD/src/main/java/northwind/model/Empleado.java
+/home/vladimir/Downloads/BBDD/src/main/java/northwind/web/HolaMundo.java
+/home/vladimir/Downloads/BBDD/src/main/java/northwind/model/Provedor.java
+/home/vladimir/Downloads/BBDD/src/main/java/northwind/web/EmpleadoController.java
+/home/vladimir/Downloads/BBDD/src/main/java/northwind/model/Region.java
+/home/vladimir/Downloads/BBDD/src/main/java/northwind/service/ProvedorService.java
+/home/vladimir/Downloads/BBDD/src/main/java/northwind/config/DBConfig.java
+/home/vladimir/Downloads/BBDD/src/main/java/northwind/model/Mensaje.java
