@@ -4,7 +4,7 @@ public class Region {
     private Integer idRegion;
     private String direccion;
     private String ciudad;
-    private String codigo_postal;
+    private String codigoPostal;
     private String region;
     private String pais;
 
@@ -13,15 +13,15 @@ public class Region {
      * @param idRegion id de la region
      * @param direccion direccion
      * @param ciudad ciudad de la region
-     * @param codigo_postal codigo postal de la region
+     * @param codigoPostal codigo postal de la region
      * @param region nombre de la region
      * @param pais pais de la region
      */
-    public Region(Integer idRegion, String direccion, String ciudad, String codigo_postal, String region, String pais) {
+    public Region(Integer idRegion, String direccion, String ciudad, String codigoPostal, String region, String pais) {
         this.idRegion = idRegion;
         this.direccion = direccion;
         this.ciudad = ciudad;
-        this.codigo_postal = codigo_postal;
+        this.codigoPostal = codigoPostal;
         this.region = region;
         this.pais = pais;
     }
@@ -78,16 +78,16 @@ public class Region {
      * Metodo para obtener el codigo postal de la reigon
      * @return codigo postal de la ciudad
      */
-    public String getCodigo_postal() {
-        return codigo_postal;
+    public String getCodigoPostal() {
+        return codigoPostal;
     }
 
     /**
      * Metodo para asignar un codigo postal a la region
-     * @param codigo_postal a asiganr
+     * @param codigoPostal a asiganr
      */
-    public void setCodigo_postal(String codigo_postal) {
-        this.codigo_postal = codigo_postal;
+    public void setCodigoPostal(String codigoPostal) {
+        this.codigoPostal = codigoPostal;
     }
 
     /**

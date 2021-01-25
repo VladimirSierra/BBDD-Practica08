@@ -11,6 +11,8 @@ import org.springframework.stereotype.Repository;
 
 import java.nio.charset.StandardCharsets;
 import java.sql.*;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -194,7 +196,7 @@ public class EmpleadoRepositoryImpl implements EmpleadoRepository {
 
             ps.setString(1, region.getDireccion() );
             ps.setString(2, region.getCiudad() );
-            ps.setString(3, region.getCodigo_postal() );
+            ps.setString(3, region.getCodigoPostal() );
             ps.setString(4, region.getRegion());
             ps.setString(5, region.getPais() );
             region.setIdRegion(ps.executeUpdate());
@@ -205,15 +207,15 @@ public class EmpleadoRepositoryImpl implements EmpleadoRepository {
             ps.setString(1, empleado.getApellido() );
             ps.setString(2, empleado.getNombre() );
             ps.setString(3, empleado.getTitulo() );
-            ps.setString(4, empleado.getTitulo_de_cortesia());
-            ps.setDate(5, Date.valueOf(empleado.getFecha_nacimiento() ));
-            ps.setDate(6, Date.valueOf( empleado.getFecha_contratacion()));
-            ps.setString(7, empleado.getTelefono_casa());
-            ps.setString(8, empleado.getExtendion());
+            ps.setString(4, empleado.getTituloDeCortesia());
+            ps.setDate(5, Date.valueOf( LocalDate.parse(empleado.getFechaNacimiento(), DateTimeFormatter.ofPattern("dd-MM-uuuu") )) );
+            ps.setDate(6, Date.valueOf( LocalDate.parse(empleado.getFechaContratacion(), DateTimeFormatter.ofPattern("dd-MM-uuuu") )) );
+            ps.setString(7, empleado.getTelefonoCasa());
+            ps.setString(8, empleado.getExtension());
             ps.setBytes(9, empleado.getFoto().getBytes(StandardCharsets.UTF_8) );
             ps.setString(10, empleado.getNotas());
-            ps.setInt(11, empleado.getReporta_a_empleado());
-            ps.setString(12, empleado.getPath_foto());
+            ps.setInt(11, empleado.getReportaAEmpleado());
+            ps.setString(12, empleado.getPathFoto());
             ps.setInt(13, region.getIdRegion()) ;
             ps.setString(14, empleado.getEmail() );
             empleado.setIdEmpleado(ps.executeUpdate());

@@ -2,36 +2,36 @@ package northwind.model;
 
 public class Empleado {
     private Integer idEmpleado;
-    private String apellido;
     private String nombre;
+    private String apellido;
     private String titulo;
-    private String titulo_de_cortesia;
-    private String fecha_nacimiento;
-    private String fecha_contratacion;
-    private String telefono_casa;
-    private String extendion;
+    private String tituloDeCortesia;
+    private String fechaNacimiento;
+    private String fechaContratacion;
+    private String telefonoCasa;
+    private String extension;
+    private String email;
     private String foto;
     private String notas;
-    private int reporta_a_empleado;
-    private String path_foto;
-    private String email;
+    private int reportaAEmpleado;
+    private String pathFoto;
     private Region region;
 
 
-    public Empleado(Integer idEmpleado, String apellido, String nombre, String titulo, String titulo_de_cortesia, String fecha_nacimiento, String fecha_contratacion, String telefono_casa, String extendion, String foto, String notas, int reporta_a_empleado, String path_foto, String email, Region region) {
+    public Empleado(Integer idEmpleado, String apellido, String nombre, String titulo, String tituloDeCortesia, String fecha_nacimiento, String fechaContratacion, String telefonoCasa, String extension, String foto, String notas, int reportaAEmpleado, String pathFoto, String email, Region region) {
         this.idEmpleado = idEmpleado;
         this.apellido = apellido;
         this.nombre = nombre;
         this.titulo = titulo;
-        this.titulo_de_cortesia = titulo_de_cortesia;
-        this.fecha_nacimiento = fecha_nacimiento;
-        this.fecha_contratacion = fecha_contratacion;
-        this.telefono_casa = telefono_casa;
-        this.extendion = extendion;
+        this.tituloDeCortesia = tituloDeCortesia;
+        this.fechaNacimiento = fecha_nacimiento;
+        this.fechaContratacion = fechaContratacion;
+        this.telefonoCasa = telefonoCasa;
+        this.extension = extension;
         this.foto = foto;
         this.notas = notas;
-        this.reporta_a_empleado = reporta_a_empleado;
-        this.path_foto = path_foto;
+        this.reportaAEmpleado = reportaAEmpleado;
+        this.pathFoto = pathFoto;
         this.email = email;
         this.region = region;
     }
@@ -68,44 +68,44 @@ public class Empleado {
         this.titulo = titulo;
     }
 
-    public String getTitulo_de_cortesia() {
-        return titulo_de_cortesia;
+    public String getTituloDeCortesia() {
+        return tituloDeCortesia;
     }
 
-    public void setTitulo_de_cortesia(String titulo_de_cortesia) {
-        this.titulo_de_cortesia = titulo_de_cortesia;
+    public void setTituloDeCortesia(String tituloDeCortesia) {
+        this.tituloDeCortesia = tituloDeCortesia;
     }
 
-    public String getFecha_nacimiento() {
-        return fecha_nacimiento;
+    public String getFechaNacimiento() {
+        return fechaNacimiento;
     }
 
-    public void setFecha_nacimiento(String fecha_nacimiento) {
-        this.fecha_nacimiento = fecha_nacimiento;
+    public void setFechaNacimiento(String fecha_nacimiento) {
+        this.fechaNacimiento = fecha_nacimiento;
     }
 
-    public String getFecha_contratacion() {
-        return fecha_contratacion;
+    public String getFechaContratacion() {
+        return fechaContratacion;
     }
 
-    public void setFecha_contratacion(String fecha_contratacion) {
-        this.fecha_contratacion = fecha_contratacion;
+    public void setFechaContratacion(String fechaContratacion) {
+        this.fechaContratacion = fechaContratacion;
     }
 
-    public String getTelefono_casa() {
-        return telefono_casa;
+    public String getTelefonoCasa() {
+        return telefonoCasa;
     }
 
-    public void setTelefono_casa(String telefono_casa) {
-        this.telefono_casa = telefono_casa;
+    public void setTelefonoCasa(String telefonoCasa) {
+        this.telefonoCasa = telefonoCasa;
     }
 
-    public String getExtendion() {
-        return extendion;
+    public String getExtension() {
+        return extension;
     }
 
-    public void setExtendion(String extendion) {
-        this.extendion = extendion;
+    public void setExtension(String extension) {
+        this.extension = extension;
     }
 
     public String getFoto() {
@@ -124,20 +124,20 @@ public class Empleado {
         this.notas = notas;
     }
 
-    public int getReporta_a_empleado() {
-        return reporta_a_empleado;
+    public int getReportaAEmpleado() {
+        return reportaAEmpleado;
     }
 
-    public void setReporta_a_empleado(int reporta_a_empleado) {
-        this.reporta_a_empleado = reporta_a_empleado;
+    public void setReportaAEmpleado(int reportaAEmpleado) {
+        this.reportaAEmpleado = reportaAEmpleado;
     }
 
-    public String getPath_foto() {
-        return path_foto;
+    public String getPathFoto() {
+        return pathFoto;
     }
 
-    public void setPath_foto(String path_foto) {
-        this.path_foto = path_foto;
+    public void setPathFoto(String pathFoto) {
+        this.pathFoto = pathFoto;
     }
 
     public String getEmail() {
