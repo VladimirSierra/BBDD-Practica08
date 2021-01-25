@@ -38,4 +38,17 @@ public class EmpleadoController {
                     HttpStatus.INTERNAL_SERVER_ERROR,"Internal error", exc);
         }
     }
+
+
+    @DeleteMapping(value = "/{idEmpleado}")
+    public boolean deleteEmpleado(@PathVariable("idEmpleado") Integer idEmpleado) {
+        try {
+            return empleadoService.deleteEmpleado(idEmpleado);
+        } catch (Exception exc) {
+            throw new ResponseStatusException(
+                    HttpStatus.INTERNAL_SERVER_ERROR,"Internal error", exc);
+        }
+    }
+
+
 }

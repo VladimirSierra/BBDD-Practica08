@@ -191,6 +191,24 @@ public class EmpleadoRepositoryImpl implements EmpleadoRepository {
 
 
     public boolean deleteEmpleado(Integer idEmpleado) throws Exception {
-        return false;
+        String query = env.getProperty("deleteEmpleado");
+        boolean ok = false;
+        try {
+            connection = dbConfig.dataSource().getConnection();
+            ps = connection.prepareStatement(query);
+            ps.setInt(1,idEmpleado);
+            ps.executeUpdate();
+            ok = true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new Exception(e);
+        } finally {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return ok;
     }
 }
