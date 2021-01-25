@@ -233,34 +233,44 @@ public class EmpleadoRepositoryImpl implements EmpleadoRepository {
         return empleado;
     }
 
+
     public Empleado updateEmpleado(Integer idEmpleado, Empleado empleado) throws Exception {
-        /* preparamos query */
         String query = env.getProperty("updateEmpleado");
+        String queryRegion = env.getProperty("insertRegion");
 
         try {
-            /* Iniciamos conexion */
             connection = dbConfig.dataSource().getConnection();
-            ps = connection.prepareStatement(query);
+            // Insertamos a la region
+            ps = connection.prepareStatement(queryRegion);
+            Region region = empleado.getRegion();
 
-            /* Actualizamos columnas */
+            ps.setString(1, region.getDireccion() );
+            ps.setString(2, region.getCiudad() );
+            ps.setString(3, region.getCodigoPostal() );
+            ps.setString(4, region.getRegion());
+            ps.setString(5, region.getPais() );
+            region.setIdRegion(ps.executeUpdate());
+            connection.createStatement();
+
+            // Insertamos al empleado
             ps = connection.prepareStatement(query);
-            ps.setString(1, empleado.getApellido());
-            ps.setString(2, empleado.getNombre());
-            ps.setString(3, empleado.getTitulo());
+            ps.setString(1, empleado.getApellido() );
+            ps.setString(2, empleado.getNombre() );
+            ps.setString(3, empleado.getTitulo() );
             ps.setString(4, empleado.getTituloDeCortesia());
             ps.setDate(5, Date.valueOf( LocalDate.parse(empleado.getFechaNacimiento(), DateTimeFormatter.ofPattern("dd-MM-uuuu") )) );
             ps.setDate(6, Date.valueOf( LocalDate.parse(empleado.getFechaContratacion(), DateTimeFormatter.ofPattern("dd-MM-uuuu") )) );
             ps.setString(7, empleado.getTelefonoCasa());
             ps.setString(8, empleado.getExtension());
-            ps.setBytes(9, empleado.getFoto().getBytes(StandardCharsets.UTF_8));
+            ps.setBytes(9, empleado.getFoto().getBytes(StandardCharsets.UTF_8) );
             ps.setString(10, empleado.getNotas());
             ps.setInt(11, empleado.getReportaAEmpleado());
             ps.setString(12, empleado.getPathFoto());
-            ps.setInt(13, empleado.getRegion().getIdRegion());
-            ps.setString(14, empleado.getEmail());
+            ps.setInt(13, region.getIdRegion()) ;
+            ps.setString(14, empleado.getEmail() );
             ps.setInt(15, idEmpleado);
-
-            /* Ejecutamos query */
+            empleado.setIdEmpleado(idEmpleado);
+            ps.executeUpdate();
             connection.createStatement();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -274,6 +284,7 @@ public class EmpleadoRepositoryImpl implements EmpleadoRepository {
         }
         return empleado;
     }
+
 
     public boolean deleteEmpleado(Integer idEmpleado) throws Exception {
         String query = env.getProperty("deleteEmpleado");
