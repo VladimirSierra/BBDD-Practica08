@@ -12,13 +12,13 @@ public class Empleado {
     private String extendion;
     private String foto;
     private String notas;
-    private String reporta_a_empleado;
+    private int reporta_a_empleado;
     private String path_foto;
     private String email;
     private Region region;
 
 
-    public Empleado(Integer idEmpleado, String apellido, String nombre, String titulo, String titulo_de_cortesia, String fecha_nacimiento, String fecha_contratacion, String telefono_casa, String extendion, String foto, String notas, String reporta_a_empleado, String path_foto, String email, Region region) {
+    public Empleado(Integer idEmpleado, String apellido, String nombre, String titulo, String titulo_de_cortesia, String fecha_nacimiento, String fecha_contratacion, String telefono_casa, String extendion, String foto, String notas, int reporta_a_empleado, String path_foto, String email, Region region) {
         this.idEmpleado = idEmpleado;
         this.apellido = apellido;
         this.nombre = nombre;
@@ -124,11 +124,11 @@ public class Empleado {
         this.notas = notas;
     }
 
-    public String getReporta_a_empleado() {
+    public int getReporta_a_empleado() {
         return reporta_a_empleado;
     }
 
-    public void setReporta_a_empleado(String reporta_a_empleado) {
+    public void setReporta_a_empleado(int reporta_a_empleado) {
         this.reporta_a_empleado = reporta_a_empleado;
     }
 
