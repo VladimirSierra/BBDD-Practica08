@@ -234,9 +234,46 @@ public class EmpleadoRepositoryImpl implements EmpleadoRepository {
     }
 
     public Empleado updateEmpleado(Integer idEmpleado, Empleado empleado) throws Exception {
-        return null;
-    }
+        /* preparamos query */
+        String query = env.getProperty("updateEmpleado");
 
+        try {
+            /* Iniciamos conexion */
+            connection = dbConfig.dataSource().getConnection();
+            ps = connection.prepareStatement(query);
+
+            /* Actualizamos columnas */
+            ps = connection.prepareStatement(query);
+            ps.setString(1, empleado.getApellido());
+            ps.setString(2, empleado.getNombre());
+            ps.setString(3, empleado.getTitulo());
+            ps.setString(4, empleado.getTituloDeCortesia());
+            ps.setDate(5, Date.valueOf( LocalDate.parse(empleado.getFechaNacimiento(), DateTimeFormatter.ofPattern("dd-MM-uuuu") )) );
+            ps.setDate(6, Date.valueOf( LocalDate.parse(empleado.getFechaContratacion(), DateTimeFormatter.ofPattern("dd-MM-uuuu") )) );
+            ps.setString(7, empleado.getTelefonoCasa());
+            ps.setString(8, empleado.getExtension());
+            ps.setBytes(9, empleado.getFoto().getBytes(StandardCharsets.UTF_8));
+            ps.setString(10, empleado.getNotas());
+            ps.setInt(11, empleado.getReportaAEmpleado());
+            ps.setString(12, empleado.getPathFoto());
+            ps.setInt(13, empleado.getRegion().getIdRegion());
+            ps.setString(14, empleado.getEmail());
+            ps.setInt(15, idEmpleado);
+
+            /* Ejecutamos query */
+            connection.createStatement();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new Exception(e);
+        } finally {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return empleado;
+    }
 
     public boolean deleteEmpleado(Integer idEmpleado) throws Exception {
         String query = env.getProperty("deleteEmpleado");
