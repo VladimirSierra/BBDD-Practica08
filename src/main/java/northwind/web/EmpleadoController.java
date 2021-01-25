@@ -1,6 +1,7 @@
 package northwind.web;
 
 import northwind.model.Empleado;
+import northwind.model.Provedor;
 import northwind.service.EmpleadoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -27,4 +28,14 @@ public class EmpleadoController {
         }
     }
 
+
+    @GetMapping(value = "/{idEmpleado}")
+    public Empleado provedor(@PathVariable(value = "idEmpleado")Integer idEmpleado){
+        try{
+            return empleadoService.getEmpleado(idEmpleado);
+        } catch (Exception exc) {
+            throw new ResponseStatusException(
+                    HttpStatus.INTERNAL_SERVER_ERROR,"Internal error", exc);
+        }
+    }
 }

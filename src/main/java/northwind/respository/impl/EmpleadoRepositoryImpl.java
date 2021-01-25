@@ -111,7 +111,74 @@ public class EmpleadoRepositoryImpl implements EmpleadoRepository {
     }
 
     public Empleado getEmpleado(Integer idEmpleado) throws Exception {
-        return null;
+
+        String query = env.getProperty("empleado");
+        String queryRegion = env.getProperty("region");
+
+        //Preparo respuesta
+        Empleado empleado = null;
+
+        try {
+            //Genero conexion
+            connection = dbConfig.dataSource().getConnection();
+
+            ps =  connection.prepareStatement(query);
+            ps.setInt(1,idEmpleado);
+            ResultSet rs = ps.executeQuery();
+            //Itero resultado
+            if(rs.next()) {
+                //Mappeo objetos de la base renglon por renglon
+                empleado = new Empleado(
+                        rs.getInt("id_empleado")
+                        , rs.getString("apellido")
+                        , rs.getString("nombre")
+                        , rs.getString("titulo")
+                        , rs.getString("titulo_de_cortesia")
+                        , rs.getString("fecha_nacimiento")
+                        , rs.getString("fecha_contratacion")
+                        , rs.getString("telefono_casa")
+                        , rs.getString("extension")
+                        , rs.getString("foto")
+                        , rs.getString("notas")
+                        , rs.getString("reporta_a_empleado")
+                        , rs.getString("path_foto")
+                        , rs.getString("email")
+                        , null );
+
+                //copiamos el id de region
+                int region_id = rs.getInt("id_region");
+
+                // Buscamos el objeto region que corresponde al usuario
+                Region region = null;
+
+                ps =  connection.prepareStatement(queryRegion);
+                ps.setInt(1,region_id);
+                ResultSet rsRegion = ps.executeQuery();
+
+                if(rsRegion.next() ) {
+                    //Mappeo objetos de la base renglon por renglon
+                    region = new Region(rsRegion.getInt("id_region")
+                            , rsRegion.getString("direccion")
+                            , rsRegion.getString("ciudad")
+                            , rsRegion.getString("codigo_postal")
+                            , rsRegion.getString("region")
+                            , rsRegion.getString("pais") );
+                }
+
+                // Asignamos la region al empleado.
+                empleado.setRegion(region);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new Exception(e);
+        } finally {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return empleado;
     }
 
     public Empleado insertEmpleado(Empleado empleado) throws Exception {
